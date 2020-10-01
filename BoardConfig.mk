@@ -180,6 +180,9 @@ BOARD_FLASH_BLOCK_SIZE := 0x40000
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/prebuilt/vendor/etc/fstab.joan
 
