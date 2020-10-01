@@ -18,6 +18,10 @@
 
 set -e
 
+export DEVICE=h930
+export DEVICE_COMMON=joan-common
+export VENDOR=lge
+
 export INITIAL_COPYRIGHT_YEAR=2018
 
 # Load extract_utils and do some sanity checks

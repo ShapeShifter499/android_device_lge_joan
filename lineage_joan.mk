@@ -1,21 +1,33 @@
-#
-# Copyright (C) 2017-2018 The LineageOS Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 # Inherit proprietary blobs
-$(call inherit-product-if-exists, vendor/lge/joan-common/joan-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/joan/joan-vendor.mk)
+
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# Device identifiers
+PRODUCT_DEVICE := joan
+PRODUCT_NAME := lineage_joan
+PRODUCT_BRAND := lge
+PRODUCT_MODEL := joan
+PRODUCT_MANUFACTURER := LGE
+PRODUCT_RELEASE_NAME := V30
+
+PRODUCT_GMS_CLIENTID_BASE := android-om-lg
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE="joan" \
+    PRODUCT_DEVICE="joan" \
+    PRODUCT_NAME="joan_global_com" \
+    PRIVATE_BUILD_DESC="joan_global_com-user 8.0.0 OPR1.170623.026 190211754b47c release-keys"
+
+BUILD_FINGERPRINT="lge/joan_global_com/joan:8.0.0/OPR1.170623.026/190211754b47c:user/release-keys"
+
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model ro.vendor.product.model
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay \
@@ -352,7 +364,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
-    $(LOCAL_PATH)/configs/sensors/sensor_def_common.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_common.conf
+    $(LOCAL_PATH)/configs/sensors/sensor_def_common.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_common.conf \
+    $(LOCAL_PATH)/configs/sensors/sensor_def_joan_global_com.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_variable.conf
 
 # Telephony
 PRODUCT_PACKAGES += \

@@ -18,6 +18,10 @@
 
 set -e
 
+export DEVICE=h930
+export DEVICE_COMMON=joan-common
+export VENDOR=lge
+
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
