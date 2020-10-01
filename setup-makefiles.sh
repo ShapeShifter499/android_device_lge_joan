@@ -18,10 +18,10 @@
 
 set -e
 
-DEVICE=*** FILL IN DEVICE ****
-VENDOR=*** FILL IN VENDOR ****
+DEVICE=joan
+VENDOR=lge
 
-INITIAL_COPYRIGHT_YEAR=**** FILL IN COPYRIGHT YEAR ****
+INITIAL_COPYRIGHT_YEAR=2018
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -43,6 +43,8 @@ setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 write_headers
 
 write_makefiles "$MY_DIR"/proprietary-files.txt
+write_makefiles "$MY_DIR"/proprietary-files_h930.txt
+write_makefiles "$MY_DIR"/proprietary-files_h932.txt
 
 # Finish
 write_footers

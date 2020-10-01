@@ -64,13 +64,36 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
 
+# Do not clean the vendor folder before fetching other blobs
+CLEAN_VENDOR=false
+
+# Reinitialize the helper for H930 blobs
+echo "Gathering H930 blobs for unified build."
+echo "Please provide the path to H930 blobs."
+echo "or hit enter to attempt fetching from a connected device, adb mode."
+echo "You may run this again if fail or skip."
+echo "Without H930 blobs this build will not be unified."
+echo -n "Path: "
+read SRC
+
+
+if [ -z "${SRC}" ]; then
+    SRC=adb
+fi
+
+
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
+
+
+extract "${MY_DIR}/proprietary-files_h930.txt" "${SRC}" ${KANG} --section "${SECTION}"
+
 # Reinitialize the helper for H932 blobs
 echo "Gathering H932 blobs for unified build."
 echo "Please provide the path to H932 blobs."
 echo "or hit enter to attempt fetching from a connected device, adb mode."
 echo "You may run this again if fail or skip."
 echo "Without H932 blobs this build will not run on T-Mobile H932 devices."
-echo -n "Path:"
+echo -n "Path: "
 read SRC
 
 if [ -z "${SRC}" ]; then
@@ -80,6 +103,5 @@ fi
 setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files_h932.txt" "${SRC}" ${KANG} --section "${SECTION}"
-
 
 "${MY_DIR}/setup-makefiles.sh"
