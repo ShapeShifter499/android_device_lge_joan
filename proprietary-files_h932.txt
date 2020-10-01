@@ -1,0 +1,4 @@
+# Graphics - Firmware
+vendor/firmware/a540_zap.b01:vendor/firmware/H932/a540_zap.b01|9b6d38bb879082aaf10c033d4a30fc99772b4d94
+vendor/firmware/a540_zap.elf:vendor/firmware/H932/a540_zap.elf|3eea789a1b57682abad3914ea1a68678ebcbd60b
+vendor/firmware/a540_zap.mdt:vendor/firmware/H932/a540_zap.mdt|e171cf13e2a21e747bef75b38d20b5bea610c037

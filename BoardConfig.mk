@@ -189,6 +189,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/prebuilt/vendor/etc/fstab.joan
 # RIL
 TARGET_RIL_VARIANT := caf
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 #BOARD_SEPOLICY_DIRS += device/lge/joan-common/sepolicy/vendor

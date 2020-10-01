@@ -345,6 +345,10 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
+# Releasetools
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/releasetools/device_check.sh:install/bin/device_check.sh
+
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
