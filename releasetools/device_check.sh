@@ -21,12 +21,12 @@ echo "Checking if we are on a H932 (not H932PR). H932 requires specific blobs."
 
 if [ $PRODUCT_MODEL = "LG-H932" ]; then
     echo "H932 detected, copying blobs..."
-    mv /system/system/vendor/firmware/H932/* /system/system/vendor/firmware/
+    mv /system/vendor/firmware/H932/* /system/vendor/firmware/
 else
     echo "Not a H932, copy over the H930 specific blobs"
-    mv /system/system/vendor/firmware/H930/* /system/system/vendor/firmware/
+    mv /system/vendor/firmware/H930/* /system/vendor/firmware/
 fi
 
 echo "Remove unneeded blobs"
-rm -r /system/system/vendor/firmware/H930
-rm -r /system/system/vendor/firmware/H932
+rm -r /system/vendor/firmware/H930
+rm -r /system/vendor/firmware/H932
