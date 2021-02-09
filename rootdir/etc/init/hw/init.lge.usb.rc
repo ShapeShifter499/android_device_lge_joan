@@ -1,5 +1,6 @@
 import /vendor/etc/init/hw/init.lge.usb.dev.rc
 import /vendor/etc/init/hw/init.lge.usb.comp.rc
+import /vendor/etc/init/hw/init.lge.usb.configfs.rc
 
 on early-boot
     write /sys/class/android_usb/android0/f_rndis/manufacturer LGE
